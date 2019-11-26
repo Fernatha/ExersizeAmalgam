@@ -1,11 +1,15 @@
 
 #include "Player.h"
-//default constructor
-Player::Player(Type type, const TextureHolder& textures) {
-	setType(type ,textures);
-	name = "Ally";
-	setHealth(20);
-	inventory[0] = new Pistol;
-	inventory[1] = new GrenadeLauncher;
-	equip(0);
-}
+struct PlayerMover
+{
+	PlayerMover(float vx, float vy)
+		: velocity(vx, vy)
+	{}
+	void operator() (Character& character, sf::Time)const)
+	{
+	character.accelerate(velocity * character.getMaxSpeed());
+	}
+
+	sf::Vector2f velocity;
+};
+

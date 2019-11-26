@@ -1,7 +1,4 @@
 #pragma once
-#include "Character.h"
-#include "Enemy.h"
-#include "ResourceIdentifiers.h"
 #include "Command.h"
 
 #include <SFML/Window/Event.hpp>
@@ -9,33 +6,28 @@
 #include <map>
 
 class CommandQueue;
-
-class Player : public Character {
+	
+	class PlayerControls
+{
 public:
-	enum Action
-	{
+	enum Action{
 		MoveLeft,
 		MoveRight,
 		MoveUp,
 		MoveDown,
 		Fire,
-		LaunchMissile,
+		Swap,
 		ActionCount
 	};
-
 	enum MissionStatus
 	{
 		MissionRunning,
 		MissionSuccess,
 		MissionFailure
 	};
-private:
-	string name;
-public:
-	Player(Type type, const TextureHolder& textures);
-	Player(string n, int h);
-	string getName();
 
+public:
+	PlayerControls();
 
 	void					handleEvent(const sf::Event& event, CommandQueue& commands);
 	void					handleRealtimeInput(CommandQueue& commands);

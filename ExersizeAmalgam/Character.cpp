@@ -26,6 +26,10 @@ Character::Character(Type type, const TextureHolder& textures)
 {
 	sf::FloatRect bounds = mSprite.getLocalBounds();
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+	setHealth(20);
+	inventory[0] = new Pistol;
+	inventory[1] = new GrenadeLauncher;
+	equip(0);
 }
 
 void Character::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
