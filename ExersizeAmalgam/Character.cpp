@@ -1,6 +1,7 @@
 
 #include "Character.h"
 #include "ResourceHolder.h"
+#include "Utility.h"
 
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
@@ -24,23 +25,14 @@ Character::Character(Type type, const TextureHolder& textures)
 	: mType(type)
 	, mSprite(textures.get(toTextureID(type)))
 {
-	sf::FloatRect bounds = mSprite.getLocalBounds();
-	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+	centerOrigin(mSprite);
 	setHealth(20);
 	inventory[0] = new Pistol;
 	inventory[1] = new GrenadeLauncher;
 	equip(0);
 }
 
-void Character::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
-{
-target.draw(mSprite, states);
-}
 
-void Character::setType(Type type, const TextureHolder& textures) {
-	mType = type;
-	mSprite.setTexture(textures.get(toTextureID(type)));
-}
 //set character health
 void Character::setHealth(int h) {
 	health = h;
@@ -61,4 +53,26 @@ bool Character::isDead() {
 int Character::getHealth()
 {
 	return health;
+}
+
+void Character::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	target.draw(mSprite, states);
+}
+
+void Character::setType(Type type, const TextureHolder& textures) {
+	mType = type;
+	mSprite.setTexture(textures.get(toTextureID(type)));
+}
+unsigned int Character::getCategory() const
+{
+	switch(mType)
+		{
+	case Player:
+			return Category::Player;
+
+		default:
+			return Category::Enemy;
+		}
+	
 }

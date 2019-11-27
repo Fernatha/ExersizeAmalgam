@@ -30,12 +30,9 @@ public:
 		MissionFailure
 	};
 private:
-	string name;
-public:
-	Player(Type type, const TextureHolder& textures);
-	Player(string n, int h);
-	string getName();
 
+public:
+	Player();
 
 	void					handleEvent(const sf::Event& event, CommandQueue& commands);
 	void					handleRealtimeInput(CommandQueue& commands);

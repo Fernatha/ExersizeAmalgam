@@ -57,6 +57,9 @@
     <ClCompile Include="Command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Utility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h">
@@ -119,12 +122,18 @@
     <ClInclude Include="PlayerControls.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ResourceHolder.inl">
       <Filter>Header Files</Filter>
     </None>
     <None Include="StringHelpers.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="Utility.inl">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>

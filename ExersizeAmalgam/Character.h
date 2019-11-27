@@ -7,7 +7,7 @@
 #include <string.h>
 #include <iostream>
 
-#include "ResourceHolder.h"
+
 #include "ResourceIdentifiers.h"
 
 #include <SFML/Graphics/Sprite.hpp>
@@ -36,6 +36,8 @@ public:
 	Character();
 	Character(Type type, const TextureHolder& textures);
 	virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+	virtual unsigned int getCategory() const;
+
 	//funtions used by characters
 	virtual  ~Character() {}
 	void equip(int index) { equippedIndex = index; }

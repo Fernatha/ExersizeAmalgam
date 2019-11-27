@@ -1,5 +1,6 @@
 #pragma once
 #include "World.h"
+#include "Player.h"
 
 #include <SFML/System/Time.hpp>
 #include <SFML/Window/Keyboard.hpp>
@@ -16,12 +17,12 @@ public:
 
 
 private:
-	void					processEvents();
+	void					processInput();
 	void					update(sf::Time elapsedTime);
 	void					render();
 
 	void					updateStatistics(sf::Time elapsedTime);
-	void					handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
+	
 
 
 private:
@@ -29,13 +30,10 @@ private:
 
 	sf::RenderWindow		mWindow;
 	World					mWorld;
+	Player mPlayer;
 
 	sf::Font				mFont;
 	sf::Text				mStatisticsText;
 	sf::Time				mStatisticsUpdateTime;
 	std::size_t			mStatisticsNumFrames;
-	bool mIsMovingUp;
-	bool mIsMovingDown;
-	bool mIsMovingRight;
-	bool mIsMovingLeft;
 };

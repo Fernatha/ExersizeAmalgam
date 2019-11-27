@@ -7,6 +7,8 @@
 #include "Character.h"
 #include "Player.h"
 #include "PickUp.h"
+#include "Command.h"
+#include "CommandQueue.h"
 
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/Graphics/View.hpp>
@@ -28,10 +30,13 @@ public:
 	void								update(sf::Time dt);
 	void								draw();
 
+	CommandQueue& getCommandQueue();
 
 private:
 	void								loadTextures();
 	void								buildScene();
+	void adaptPlayerPosition();
+	void adaptPlayerVelocity();
 
 
 private:
@@ -50,6 +55,7 @@ private:
 
 	SceneNode							mSceneGraph;
 	std::array<SceneNode*, LayerCount>	mSceneLayers;
+	CommandQueue mCommandQueue;
 
 	sf::FloatRect						mWorldBounds;
 	sf::Vector2f						mSpawnPosition;
